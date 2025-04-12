@@ -60,5 +60,3 @@ yarn-error.log*
 .turbo
 
 bun.lockb
-
-.vercel
