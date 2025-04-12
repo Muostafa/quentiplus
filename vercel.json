@@ -1,7 +1,10 @@
 {
-  "build": {
-    "env": {
-      "VERCEL_FORCE_NODE": "1"
+  "projects": {
+    "apps/next": {
+      "framework": "nextjs",
+      "buildCommand": "bun run build",
+      "outputDirectory": "apps/next/.next",
+      "installCommand": "bun install"
     }
   }
 }
