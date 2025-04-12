@@ -75,7 +75,6 @@ let config = {
     "@quenti/drizzle",
     "@quenti/trpc",
     "@quenti/inngest",
-    "@quenti/integrations",
     "@quenti/types",
     "@quenti/website",
   ],

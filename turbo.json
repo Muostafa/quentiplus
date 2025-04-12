@@ -23,12 +23,7 @@
       "cache": false
     }
   },
-  "globalDependencies": [
-    "**/.env",
-    "yarn.lock",
-    "packages/console/**/*",
-    "packages/integrations/**/*"
-  ],
+  "globalDependencies": ["**/.env", "yarn.lock"],
   "globalEnv": [
     "NODE_ENV",
     "PORT",

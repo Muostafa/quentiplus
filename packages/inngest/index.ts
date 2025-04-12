@@ -1,7 +1,6 @@
 import { env } from "@quenti/env/server";
 
 import { collectOrganizationActivity } from "./functions/collect-organization-activity";
-import { completeQuizletProfileImport } from "./functions/complete-quizlet-profile-import";
 import { cortexClassifyClass } from "./functions/cortex-classify-class";
 import { importQuizletProfile } from "./functions/import-quizlet-profile";
 import { importQuizletProfileSet } from "./functions/import-quizlet-profile-set";
@@ -66,34 +65,12 @@ type CortexClassifyClass = {
   };
 };
 
-type IntegrationsQuizletImportProfile = {
-  data: {
-    userId: string;
-    username: string;
-  };
-};
-type IntegrationsQuizletImportProfileSet = {
-  data: {
-    url: string;
-    userId: string;
-    publishedTimestamp: number;
-  };
-};
-type IntegrationsQuizletCompleteImportProfile = {
-  data: {
-    userId: string;
-  };
-};
-
 export type Events = {
   "cortex/classify-class": CortexClassifyClass;
   "orgs/invite-members": OrgsInviteMembers;
   "orgs/invite-teachers": OrgInviteTeachers;
   "orgs/delete": OrgDelete;
   "classes/invite-teachers": ClassesInviteTeachers;
-  "integrations/quizlet/import-profile": IntegrationsQuizletImportProfile;
-  "integrations/quizlet/import-profile-set": IntegrationsQuizletImportProfileSet;
-  "integrations/quizlet/complete-import-profile": IntegrationsQuizletCompleteImportProfile;
 };
 
 export * from "./inngest";
@@ -106,7 +83,6 @@ export const functions = [
   cortexClassifyClass,
   importQuizletProfile,
   importQuizletProfileSet,
-  completeQuizletProfileImport,
   // Scheduled jobs
   env.ENABLE_CLICKHOUSE === "true" ? collectOrganizationActivity : [],
 ].flat();
