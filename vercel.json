@@ -1,10 +1,7 @@
 {
-  "projects": {
-    "apps/next": {
-      "framework": "nextjs",
-      "buildCommand": "bun run build",
-      "outputDirectory": "apps/next/.next",
-      "installCommand": "bun install"
-    }
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "dotenv -- turbo build --filter @quenti/next...",
+  "installCommand": "bun install",
+  "outputDirectory": "apps/next/.next"
 }
