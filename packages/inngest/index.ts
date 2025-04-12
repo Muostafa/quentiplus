@@ -2,8 +2,6 @@ import { env } from "@quenti/env/server";
 
 import { collectOrganizationActivity } from "./functions/collect-organization-activity";
 import { cortexClassifyClass } from "./functions/cortex-classify-class";
-import { importQuizletProfile } from "./functions/import-quizlet-profile";
-import { importQuizletProfileSet } from "./functions/import-quizlet-profile-set";
 import { scheduleOrgDeletion } from "./functions/schedule-organization-deletion";
 import { sendClassInviteEmails } from "./functions/send-class-invite-emails";
 import { sendOrgInviteEmails } from "./functions/send-org-invite-emails";
@@ -81,8 +79,6 @@ export const functions = [
   scheduleOrgDeletion,
   sendClassInviteEmails,
   cortexClassifyClass,
-  importQuizletProfile,
-  importQuizletProfileSet,
   // Scheduled jobs
   env.ENABLE_CLICKHOUSE === "true" ? collectOrganizationActivity : [],
 ].flat();
