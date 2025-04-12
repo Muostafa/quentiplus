@@ -1,7 +1,8 @@
 import { withHighlightConfig } from "@highlight-run/next/config";
+import { readFileSync } from "fs";
 import { withAxiom } from "next-axiom";
 import nextBuildId from "next-build-id";
-import { dirname } from "path";
+import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
 // @ts-check
@@ -13,7 +14,11 @@ import { fileURLToPath } from "url";
 import "@quenti/env/client/client.mjs";
 import "@quenti/env/server/server.mjs";
 
-import pjson from "./package.json" assert { type: "json" };
+// Read package.json using fs
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const pjsonPath = join(__dirname, "package.json");
+const pjson = JSON.parse(readFileSync(pjsonPath, "utf-8"));
 
 const shouldAnalyzeBundles = process.env.ANALYZE === "true";
 const withBundleAnalyzer = (await import("@next/bundle-analyzer")).default({
@@ -22,8 +27,7 @@ const withBundleAnalyzer = (await import("@next/bundle-analyzer")).default({
 
 const appVersion = pjson.version;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// __filename and __dirname are now defined earlier
 
 const domains = ["lh3.googleusercontent.com", "images.unsplash.com"];
 if (process.env.USERS_BUCKET_URL)
