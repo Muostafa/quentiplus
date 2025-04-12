@@ -3,5 +3,5 @@
   "framework": "nextjs",
   "buildCommand": "dotenv -- turbo build --filter @quenti/next...",
   "installCommand": "bun install",
-  "outputDirectory": "apps/next/.next"
+  "outputDirectory": ".next"
 }
