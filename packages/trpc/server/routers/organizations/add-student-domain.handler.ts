@@ -1,8 +1,5 @@
-import all from "email-providers/all.json" assert { type: "json" };
-
 import { sendConfirmCodeEmail } from "@quenti/emails";
 import { disbandOrgUsersByDomain } from "@quenti/enterprise/users";
-import { env } from "@quenti/env/server";
 
 import { TRPCError } from "@trpc/server";
 
@@ -32,15 +29,6 @@ export const addStudentDomainHandler = async ({
       code: "BAD_REQUEST",
       message: "email_domain_mismatch",
     });
-  }
-
-  if (env.BYPASS_ORG_DOMAIN_BLACKLIST !== "true") {
-    if (all.find((domain) => domain === input.domain)) {
-      throw new TRPCError({
-        code: "BAD_REQUEST",
-        message: "email_domain_blacklisted",
-      });
-    }
   }
 
   await rateLimitOrThrow({
