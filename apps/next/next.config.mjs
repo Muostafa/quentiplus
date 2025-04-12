@@ -13,12 +13,14 @@ import { fileURLToPath } from "url";
 import "@quenti/env/client/client.mjs";
 import "@quenti/env/server/server.mjs";
 
+import pjson from "./package.json" assert { type: "json" };
+
 const shouldAnalyzeBundles = process.env.ANALYZE === "true";
 const withBundleAnalyzer = (await import("@next/bundle-analyzer")).default({
   enabled: shouldAnalyzeBundles,
 });
 
-const appVersion = "1.3.1";
+const appVersion = pjson.version;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -75,6 +77,7 @@ let config = {
     "@quenti/drizzle",
     "@quenti/trpc",
     "@quenti/inngest",
+    "@quenti/integrations",
     "@quenti/types",
     "@quenti/website",
   ],
